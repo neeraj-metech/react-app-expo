@@ -8,6 +8,18 @@ function TopicsScreen({ navigation }) {
         <View style={styles.container}>
             <Text>It is Topics page component.</Text>
             <Button
+                title="Go to Topics again"
+                onPress={() => navigation.push('Topics')}
+            />
+            <Button
+                title="Go to Back"
+                onPress={() => navigation.goBack()}
+            />
+            <Button
+                title="Go to first page"
+                onPress={() => navigation.popToTop()}
+            />
+            <Button
                 title="Go to Home"
                 onPress={() => navigation.navigate('Home')}
             />

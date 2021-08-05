@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { Text, View, Button, StyleSheet } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Text, TextInput, View, Button, StyleSheet } from 'react-native'
 
 function HomeScreen({ navigation }) {
+
     return (
         <View style={styles.container}>
-            <Text>It is Home page component.</Text>
+            <Text>Home page</Text>
             <Button
                 title="Go to About"
                 onPress={() => navigation.navigate('About')}
