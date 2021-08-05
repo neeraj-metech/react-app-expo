@@ -1,22 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View,Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './App/Screens/HomeScreen'
+import AboutScreen from './App/Screens/AboutScreen'
+import TopicsScreen from './App/Screens/TopicsScreen'
 
+const Stack = createNativeStackNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>woking....</Text>
-      <Button onPress={()=>alert('dfdsddsf')} title="Click Me" />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+        <Stack.Screen name="Topics" component={TopicsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
