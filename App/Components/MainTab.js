@@ -15,8 +15,8 @@ function MainTab() {
     return (
         <Tab.Navigator
             initialRouteName="Home"
-            activeColor="#e91e63"
-            barStyle={{ backgroundColor: 'tomato' }}
+            activeColor="#fff"
+            barStyle={{ backgroundColor: '#009387' }}
         >
             <Tab.Screen
                 name="Home"
@@ -34,7 +34,7 @@ function MainTab() {
                 options={{
                     tabBarLabel: 'About',
                     tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons name="bell" color={color} size={26} />
+                        <MaterialCommunityIcons name="account" color={color} size={26} />
                     ),
                 }}
             />
@@ -44,7 +44,7 @@ function MainTab() {
                 options={{
                     tabBarLabel: 'Topics',
                     tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons name="account" color={color} size={26} />
+                        <MaterialCommunityIcons name="briefcase" color={color} size={26} />
                     ),
                 }}
             />
