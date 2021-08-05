@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Text, Button, View, StyleSheet } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 function TopicsScreen({ navigation }) {
     return (
@@ -13,7 +11,7 @@ function TopicsScreen({ navigation }) {
             />
             <Button
                 title="Go to Back"
-                onPress={() => navigation.goBack()}
+                onPress={() => navigation.goBack(null)}
             />
             <Button
                 title="Go to first page"
