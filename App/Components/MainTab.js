@@ -5,10 +5,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import HomeScreen from '../Screens/HomeScreen'
 import AboutScreen from '../Screens/AboutScreen'
 import TopicsScreen from '../Screens/TopicsScreen'
+import Registration from '../Screens/Registration/Registration'
 
 const HomeStack = createNativeStackNavigator();
 const AboutStack = createNativeStackNavigator();
 const TopicStack = createNativeStackNavigator();
+const RegStack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 function MainTab() {
@@ -35,6 +37,16 @@ function MainTab() {
                     tabBarLabel: 'About',
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons name="account" color={color} size={26} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Registration"
+                component={RegStackScreen}
+                options={{
+                    tabBarLabel: 'Registration',
+                    tabBarIcon: ({ color }) => (
+                        <MaterialCommunityIcons name="card-account-details" color={color} size={26} />
                     ),
                 }}
             />
@@ -97,5 +109,20 @@ const TopicStackScreen = ({ navigation }) => {
         }}>
             <TopicStack.Screen name="Topics" component={TopicsScreen} />
         </TopicStack.Navigator>
+    )
+}
+const RegStackScreen = ({ navigation }) => {
+    return (
+        <RegStack.Navigator screenOptions={{
+            headerStyle: {
+                backgroundColor: '#009387',
+            },
+            headerTintColor: '#fff',
+            headerTintStyle: {
+                fontWeight: 'bold',
+            }
+        }}>
+            <RegStack.Screen name="Registration" component={Registration} />
+        </RegStack.Navigator>
     )
 }
