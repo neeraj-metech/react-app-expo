@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react'
-import { Text, TextInput, View, Button, StyleSheet } from 'react-native'
+import { Text, ScrollView, View, Button, StyleSheet } from 'react-native'
 
 
 function HomeScreen({ navigation }) {
@@ -18,22 +18,25 @@ function HomeScreen({ navigation }) {
     }, [])
 
     return (
-        <View style={styles.container}>
-            <Text>Home page</Text>
-            {
-                item.postData.map((val, key) => (
-                    <View key={val.id}>
-                        <Text>{val.title}</Text>
-                    </View>
-                )
-                )
-            }
-            <Button
-                title="Go to About"
-                onPress={() => navigation.navigate('About')}
-            />
+        <ScrollView>
+            <View style={styles.container}>
+                <Text>Home page</Text>
+                {
+                    item.postData.map((val, key) => (
+                        <View key={val.id}>
+                            <Text style={styles.title}>{val.title}</Text>
+                            <br />
+                        </View>
+                    )
+                    )
+                }
+                <Button
+                    title="Go to About"
+                    onPress={() => navigation.navigate('About')}
+                />
 
-        </View>
+            </View>
+        </ScrollView>
     )
 }
 
@@ -44,6 +47,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
 
+    },
+    title: {
+        color: 'white',
     }
 })
 

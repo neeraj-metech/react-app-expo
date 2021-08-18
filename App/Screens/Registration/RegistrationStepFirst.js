@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React from 'react'
 import { Text, Button, View, StyleSheet, TextInput } from 'react-native'
 
 function RegistrationStepFirst(props, { navigation }) {
@@ -27,7 +27,6 @@ function RegistrationStepFirst(props, { navigation }) {
                 placeholder="Enter your email."
                 value={email}
             />
-
             <Button onPress={handleContinue} title="Continue" />
         </View >
     )
@@ -46,6 +45,7 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
+        color: 'white',
     }
 })
 
