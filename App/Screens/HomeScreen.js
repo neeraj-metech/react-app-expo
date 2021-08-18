@@ -18,25 +18,27 @@ function HomeScreen({ navigation }) {
     }, [])
 
     return (
-        <ScrollView>
-            <View style={styles.container}>
-                <Text>Home page</Text>
-                {
-                    item.postData.map((val, key) => (
+        <View style={styles.container}>
+            <Text>Home page</Text>
+            {
+                item.postData.map((val, key) => (
+                    (val.id < 10) ?
                         <View key={val.id}>
                             <Text style={styles.title}>{val.title}</Text>
                             <br />
                         </View>
-                    )
-                    )
-                }
-                <Button
-                    title="Go to About"
-                    onPress={() => navigation.navigate('About')}
-                />
+                        : ''
 
-            </View>
-        </ScrollView>
+                )
+                )
+            }
+            <Button
+                title="Go to About"
+                onPress={() => navigation.navigate('About')}
+            />
+
+        </View>
+
     )
 }
 
