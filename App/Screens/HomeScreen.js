@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from 'react'
-import { Text, ScrollView, View, Button, StyleSheet } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Text, View, Button, StyleSheet } from 'react-native'
 
 
 function HomeScreen({ navigation }) {
@@ -25,7 +25,6 @@ function HomeScreen({ navigation }) {
                     (val.id < 10) ?
                         <View key={val.id}>
                             <Text style={styles.title}>{val.title}</Text>
-                            <br />
                         </View>
                         : ''
 
