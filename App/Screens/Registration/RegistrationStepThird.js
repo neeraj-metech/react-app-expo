@@ -25,9 +25,7 @@ function RegistrationStepThird(props, { navigation }) {
                 <Text style={styles.Details}>Address: {props.value.address}</Text>
             </View>
             <View style={styles.buttons}>
-                <View style={{ marginBottom: '5px' }}>
-                    <Button onPress={handleBack} title="Back" />
-                </View>
+                <Button style={{ marginBottom: '5px' }} onPress={handleBack} title="Back" />
                 {/* <View>
                     <Button onPress={handleContinue} title="Continue" />
                 </View> */}

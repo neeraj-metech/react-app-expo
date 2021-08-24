@@ -30,12 +30,8 @@ function RegistrationStepSecond(props, { navigation }) {
                 value={address}
             />
             <View style={styles.buttons}>
-                <View style={{ marginBottom: '5px' }}>
-                    <Button onPress={handleBack} title="Back" />
-                </View>
-                <View>
-                    <Button onPress={handleContinue} title="Continue" />
-                </View>
+                <Button style={{ marginBottom: '5px' }} onPress={handleBack} title="Back" />
+                <Button onPress={handleContinue} title="Continue" />
             </View>
         </View >
     )
