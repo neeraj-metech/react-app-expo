@@ -1,25 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import SearchBar from '../../Components/RastaurantComponents/SearchBar'
-import yelp from '../../Components/RastaurantComponents/Api/yelp'
-import RestaurantDetail from '../../Components/RastaurantComponents/RestaurantDetail'
+import RestaurantResults from '../../Components/RastaurantComponents/RestaurantResults'
+import useResults from '../../Components/RastaurantComponents/hooks/useResults'
 const HomeScreen = () => {
     const [term, Setterm] = useState('');
-    const [results, setResults] = useState([]);
-    const searchApi = async (getTerm) => {
-        const response = await yelp.get('/search', {
-            params: {
-                limit: 50,
-                term: getTerm,
-                location: 'san jose'
-            }
-        });
-        setResults(response.data.businesses);
-    };
+    const [searchApi, results, errorMessage] = useResults();
 
-    useEffect(() => {
-        searchApi('pasta')
-    }, [])
     const filterRestultByPrice = (price) => {
         //price === '$' || "$$" || '$$$'
         return results.filter(result => {
@@ -27,16 +14,39 @@ const HomeScreen = () => {
         })
     }
     return (
-        <View>
+        <View style={{ flex: 1 }}>
+            {/* or we can use empty element like <></> */}
             <SearchBar
                 value={term}
                 changetext={text => Setterm(text)}
                 onEnter={() => searchApi(term)}
             />
-            <Text>We have found {results.length} results</Text>
-            <RestaurantDetail title="Cost Effective" result={filterRestultByPrice('$')} />
-            <RestaurantDetail title="Bit Pricer" result={filterRestultByPrice('$$')} />
-            <RestaurantDetail title="Big Spender" result={filterRestultByPrice('$$$')} />
+            {/* <Text>We have found {results.length} results</Text> */}
+            {
+                errorMessage ?
+                    <Text>{errorMessage}</Text>
+                    :
+                    <ScrollView>
+                        {
+                            filterRestultByPrice('$').length > 0 ?
+                                <RestaurantResults title="Cost Effective" result={filterRestultByPrice('$')} />
+                                : null
+
+                        }
+                        {
+                            filterRestultByPrice('$$').length > 0 ?
+                                <RestaurantResults title="Bit Pricer" result={filterRestultByPrice('$$')} />
+                                : null
+
+                        }
+                        {
+                            filterRestultByPrice('$$$').length > 0 ?
+                                <RestaurantResults title="Big Spender" result={filterRestultByPrice('$$$')} />
+                                : null
+
+                        }
+                    </ScrollView>
+            }
         </View>
     )
 }

@@ -1,17 +1,25 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-const RestaurantDetail = ({ title, result }) => {
+import { View, Text, StyleSheet, Image } from 'react-native'
+const RestaurantDetail = ({ image, title, star, review }) => {
     return (
-        <View>
+        <View style={styles.container}>
+            <Image style={styles.image} source={{ 'uri': image }} />
             <Text style={styles.title}>{title}</Text>
-            <Text>{result.length}</Text>
+            <Text>{star} Stars, {review} Reviews</Text>
         </View>
     )
 }
 const styles = StyleSheet.create({
+    container: {
+        marginLeft: 15,
+        marginVertical: 5
+    },
     title: {
-        fontSize: 16,
         fontWeight: 'bold'
+    },
+    image: {
+        height: 100,
+        borderRadius: 5
     }
 })
 export default RestaurantDetail
