@@ -1,7 +1,10 @@
 import React from 'react'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import RestaurantDetail from './RestaurantDetail'
-const RestaurantResults = ({ title, result }) => {
+const RestaurantResults = ({ title, result, navigation }) => {
+    if (!result.length) {
+        return null
+    }
     return (
         <View>
             <Text style={styles.title}>{title}</Text>
@@ -12,12 +15,16 @@ const RestaurantResults = ({ title, result }) => {
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => {
                     //console.log(item)
-                    return <RestaurantDetail
-                        image={item.image_url}
-                        title={item.name}
-                        star={item.rating}
-                        review={item.review_count}
-                    />
+                    return (
+                        <TouchableOpacity onPress={() => navigation.navigate('Detail', { id: item.id, 'name': 'neerej' })}>
+                            <RestaurantDetail
+                                image={item.image_url}
+                                title={item.name}
+                                star={item.rating}
+                                review={item.review_count}
+                            />
+                        </TouchableOpacity>
+                    )
                 }}
             />
         </View>

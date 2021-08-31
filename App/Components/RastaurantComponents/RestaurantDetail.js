@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
+
 const RestaurantDetail = ({ image, title, star, review }) => {
     return (
         <View style={styles.container}>
